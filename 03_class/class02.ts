@@ -26,18 +26,26 @@ class Dict {
     findDefinition(term: string) {
         return this.words[term];
     }
+    static printHello() {
+        return "Hello";
+    }
 }
 
 class Word {
     constructor (
-        public term: string,
-        public def: string
+        public readonly term: string,
+        public readonly def: string
     ) {}
 }
 
 const tacos = new Word("tacos 🌮", "South American Food");
 
+// tacos.term = "xxxxxx"; 
+/* Word 클래스의 변수가 readonly라서 변경 불가 */
+
 const dict = new Dict();
 
 dict.addWord(tacos);
 dict.findDefinition("tacos");
+
+Dict.printHello();
