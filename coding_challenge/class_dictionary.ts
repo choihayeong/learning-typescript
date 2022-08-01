@@ -40,7 +40,7 @@ class Word {
     ) {}
 }
 
-/* test */
+/* test case */
 const tacos = new Word("tacos", "southern American food"),
     apple = new Word("apple🍎", "newton's fruit"),
     banana = new Word("banana🍌", "famous diet food"),
@@ -52,8 +52,8 @@ dict.add(tacos);
 dict.add(apple);
 dict.add(banana);
 dict.add(carrot);
-dict.get("kimchi");
+dict.get("tacos");
 dict.delete("apple🍎");
-dict.update("kimchi", "southern American famous main dish 🌮");
+dict.update("tacos", "southern American famous main dish 🌮");
 dict.showAll();
 dict.count();
