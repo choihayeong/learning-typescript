@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./include/inc_head.html') %>
+<body>
+  <div class="wrap">
+    <!-- header -->
+    <%- include('./include/inc_header.html') %>
+    <!-- // -->
+    <div class="container">
+      <div class="box">
+        <div class="pad-inline">
+          <h2 class="title" style="cursor: pointer;">Welcome :)</h2>
+        </div>
+      </div>
+      <div class="contents">
+        <div class="pad-inline">
+          <h3 class="contents__title">TS Casino</h3>
+          <form id="casinoForm" class="form">
+            <fieldset>
+              <legend class="blind">Generate Numbers</legend>
+              <div class="form-input">
+                <label for="iptRange">
+                  ❓ Generate a number between 0 and
+                  <input type="number" id="iptRange" min="1" step="1" required>
+                </label>
+              </div>
+              <div class="form-input">
+                <label for="iptGuess">
+                  ❓ Guess the number:
+                  <input type="number" id="iptGuess" min="0" step="1" required>
+                </label>
+              </div>
+            </fieldset>
+            <input type="submit" value="Play!">
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- footer -->
+    <%- include('./include/inc_footer.html') %>
+    <!-- // -->
+  </div>
+  <script src="../assets/scripts/bundle.js"></script>
+</body>
+</html>
