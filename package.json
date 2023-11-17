@@ -1,24 +1,23 @@
 {
-  "name": "gulp-typescript-template",
+  "name": "learning-typescript",
   "version": "1.0.0",
-  "description": "gulp template for building a development environment and studying typescript",
+  "description": "learning typescript in gulp environment",
   "main": "index.js",
   "scripts": {
     "dev": "gulp dev",
-    "build": "gulp build",
-    "deploy": "gulp deploy"
+    "build": "gulp build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/choihayeong/gulp-typescript-template.git"
+    "url": "git+https://github.com/choihayeong/learning-typescript.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/choihayeong/gulp-typescript-template/issues"
+    "url": "https://github.com/choihayeong/learning-typescript/issues"
   },
-  "homepage": "https://github.com/choihayeong/gulp-typescript-template#readme",
+  "homepage": "https://github.com/choihayeong/learning-typescript#readme",
   "devDependencies": {
     "@babel/core": "^7.17.10",
     "@babel/preset-env": "^7.17.10",
