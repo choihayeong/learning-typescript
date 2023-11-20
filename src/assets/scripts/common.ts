@@ -1,5 +1,6 @@
 import { convertTypeAcquisitionFromJson } from "typescript";
 import { random } from "./random";
+import { getClockNow, getTodayDate } from "./clock";
 
 const rndOne : number = random(10);
 const rndTwo : number = random(20);
@@ -7,7 +8,7 @@ const rndTwo : number = random(20);
 console.log(`${rndOne}, ${rndTwo}`);
 
 // challenge_01
-type Color = string;
+type Color = string; // challenge_05 에서도 사용
 const colors : Color[] = ["#1abc9c", "#3498db", "#9b59b6", "#f39c12", "#e74c3c"];
 
 const h2Element = document.querySelector("h2") as HTMLElement;
@@ -159,7 +160,7 @@ const getSubmittedForm = (ele: any) => {
 
 casinoForm?.addEventListener("submit", getSubmittedForm);
 
-// challeng_04 (-ING)
+// challenge_04
 const countdownEl = document.querySelector('.countdown') as HTMLElement;
 
 const TARGET_DATE = countdownEl?.dataset.date;
@@ -191,3 +192,48 @@ const countDday = () => {
 
 countdownEl ? intervalId = setInterval(countDday, SECOND_IN_MS) : clearInterval(intervalId);
 
+// chanllenge_05
+const variousColors : Color[] = ["#ef5777","#575fcf","#4bcffa","#34e7e4","#0be881","#f53b57","#3c40c6","#0fbcf9","#00d8d6","#05c46b","#ffc048","#ffdd59","#ff5e57","#d2dae2","#485460","#ffa801","#ffd32a","#ff3f34"];
+
+const genColorsButton = document.querySelector("#genColors") as HTMLElement;
+
+const getRandomBGColor = () : void => {
+  const body = document.body as HTMLElement;
+
+  const rndNum_01 : number = Math.floor(Math.random() * variousColors.length);
+  let rndNum_02 : number;
+
+  do {
+    rndNum_02 = Math.floor(Math.random() * variousColors.length);
+  } while (rndNum_01 === rndNum_02)
+
+  const FROM_COLOR = variousColors[rndNum_01];
+  const TO_COLOR = variousColors[rndNum_02];
+
+  body.style.setProperty("background", `linear-gradient(to left, ${FROM_COLOR}, ${TO_COLOR})`);
+};
+
+genColorsButton?.addEventListener("click", getRandomBGColor);
+
+
+// main
+type Clock = {
+  hours: number | string,
+  minutes: number | string,
+  seconds: number | string,
+  milliseconds?: number | string,
+};
+
+type TodayInfo = {
+  year: number,
+  month: number | string,
+  day: number,
+  weekday: string,
+};
+
+const MONTH_TYPE = "string";
+
+const mainClock : Clock = getClockNow();
+const mainTodayDate : TodayInfo = getTodayDate(MONTH_TYPE);
+
+console.log(mainTodayDate);

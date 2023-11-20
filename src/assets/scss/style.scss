@@ -113,4 +113,15 @@ input[type="submit"], button {
   }
 }
 
+// main
+.section {
+  &--login {
+    text-align: center;
+
+    .ts-today {
+      margin-top: 1.25rem;
+    }
+  }
+}
+
 @import "media";
