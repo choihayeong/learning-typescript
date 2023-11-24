@@ -220,7 +220,7 @@ genColorsButton?.addEventListener("click", getRandomBGColor);
 type Clock = {
   hours: number | string,
   minutes: number | string,
-  seconds: number | string,
+  seconds?: number | string,
   milliseconds?: number | string,
 };
 
@@ -233,7 +233,21 @@ type TodayInfo = {
 
 const MONTH_TYPE = "string";
 
-const mainClock : Clock = getClockNow();
-const mainTodayDate : TodayInfo = getTodayDate(MONTH_TYPE);
+const tsClockEle = document.querySelector(".ts-clock") as HTMLElement;
+const tsDateEle = document.querySelector(".ts-date") as HTMLElement;
 
-console.log(mainTodayDate);
+const intervalClock = () => {
+  const mainClock : Clock = getClockNow();
+  const mainTodayDate : TodayInfo = getTodayDate(MONTH_TYPE);
+
+  tsClockEle.innerHTML = `
+    ${mainClock.hours}:${mainClock.minutes}:${mainClock.seconds}
+  `;
+  tsDateEle.innerHTML = `
+    ${mainTodayDate.month} / ${mainTodayDate.day} / ${mainTodayDate.year} (${mainTodayDate.weekday})
+  `;
+};
+
+let intervalClockId;
+
+tsClockEle || tsDateEle ? intervalClockId = setInterval(intervalClock, SECOND_IN_MS) : clearInterval(intervalClockId);

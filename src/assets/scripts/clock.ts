@@ -1,7 +1,7 @@
 type Clock = {
   hours: number | string,
   minutes: number | string,
-  seconds: number | string,
+  seconds?: number | string,
   milliseconds?: number | string,
 };
 
@@ -12,6 +12,7 @@ type TodayDate = {
   weekday: string,
 };
 
+/** getClockNow */
 export const getClockNow = () : Clock => {
   const TODAY = new Date();
 
@@ -19,7 +20,7 @@ export const getClockNow = () : Clock => {
     hours : TODAY.getHours(),
     minutes : TODAY.getMinutes(),
     seconds : TODAY.getSeconds(),
-  }
+  };
 
   return {
     hours: CURRENT.hours,
@@ -28,16 +29,23 @@ export const getClockNow = () : Clock => {
   };
 }
 
-type MonthString = (idx: number) => string;
+type DateIndex = (idx: number) => string;
 
-const getMonthString: MonthString = (index)=> {
-  const MONTH_ARR : string [] = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const getMonthString: DateIndex = (index) => {
+  const MONTH_ARR : string[] = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
   return MONTH_ARR[index];
-}
+};
+
+const getWeekDayString: DateIndex = (index) => {
+  const WEEKDAY_ARR : string[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+  return WEEKDAY_ARR[index];
+};
 
 type TodayInfo = (type: string) => TodayDate;
 
+/** getTodayDate */
 export const getTodayDate: TodayInfo = (monthType) => {
   const TODAY = new Date();
 
@@ -48,6 +56,6 @@ export const getTodayDate: TodayInfo = (monthType) => {
     year: TODAY.getFullYear(),
     month: monthType === "string" ? getMonthString(MONTH_INDEX) : MONTH_INDEX + 1,
     day: TODAY.getDate(),
-    weekday: "Monday",
+    weekday: getWeekDayString(WEEKDAY_INDEX),
   };
 }
