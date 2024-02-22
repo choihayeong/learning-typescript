@@ -160,10 +160,13 @@ const getSubmittedForm = (ele: any) => {
 
 casinoForm?.addEventListener("submit", getSubmittedForm);
 
-// challenge_04
+// challenge_04 (X-MAS COUNTDOWN)
 const countdownEl = document.querySelector('.countdown') as HTMLElement;
 
-const TARGET_DATE = countdownEl?.dataset.date;
+const { date } = countdownEl?.dataset;
+
+const CURRENT_YEAR = new Date().getFullYear();
+const TARGET_DATE = `${CURRENT_YEAR}-${countdownEl?.dataset.date}`;
 const CONTENTS = countdownEl?.dataset.contents;
 
 const SECOND_IN_MS : number = 1000;
@@ -171,13 +174,22 @@ const MINUTE_IN_MS = SECOND_IN_MS * 60;
 const HOUR_IN_MS = MINUTE_IN_MS * 60; 
 const DAY_IN_MS = HOUR_IN_MS * 24;
 
+
+console.log(new Date(TARGET_DATE));
+
 let intervalId;
 
 const countDday = () => {
-  const TODAY = +new Date();
-  const TARGET = TARGET_DATE ? +new Date(TARGET_DATE) : TODAY; // TARGET_DATE가 null 이든 undefined 일때는 일단 default 값으로 TODAY로 설정함.........
+  const TODAY = Date.now();
+  const TARGET = date.length > 0 ? +new Date(TARGET_DATE) : TODAY; // TARGET_DATE가 null 이든 undefined 일때는 일단 default 값으로 TODAY로 설정함.........
 
-  let diff : number = TARGET - TODAY;
+  let diff: number = TARGET - TODAY;
+
+  if (diff < 0) {
+    const NEXT_YEAR = CURRENT_YEAR + 1;
+    const NEXT_TARGET = `${NEXT_YEAR}-${countdownEl?.dataset.date}`;
+    diff = +new Date(NEXT_TARGET) - TODAY;
+  }
 
   const DAYS = Math.floor(diff / DAY_IN_MS);
   const HH = Math.floor((diff % DAY_IN_MS) / HOUR_IN_MS);
