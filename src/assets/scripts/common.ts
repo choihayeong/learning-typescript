@@ -181,7 +181,8 @@ let intervalId;
 
 const countDday = () => {
   const TODAY = Date.now();
-  const TARGET = date.length > 0 ? +new Date(TARGET_DATE) : TODAY; // TARGET_DATE가 null 이든 undefined 일때는 일단 default 값으로 TODAY로 설정함.........
+  const TARGET = TODAY;
+  // const TARGET = date.length > 0 ? +new Date(TARGET_DATE) : TODAY; // TARGET_DATE가 null 이든 undefined 일때는 일단 default 값으로 TODAY로 설정함.........
 
   let diff: number = TARGET - TODAY;
 

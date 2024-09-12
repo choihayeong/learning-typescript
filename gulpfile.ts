@@ -126,7 +126,7 @@ const BrowserSync = () => {
       //   baseDir: "./"
       // },
       proxy: "http://localhost:3030", // app.ts의 port와 같음
-      port: 8080,
+      port: 3030,
     });
     resolve();
   });
